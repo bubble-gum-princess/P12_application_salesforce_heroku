@@ -4,6 +4,9 @@ public with sharing class ContactService {
         contact[] contacts = [SELECT Id FROM Contact WHERE email=:aContact.email];
         return contacts.isEmpty() ? null : contacts[0];
     }
+    public static Contact findById (String id) {
+        return [SELECT Id FROM Contact WHERE Id=:id];
+    }
 
     public static Contact create(Contact aContact) {
         insert aContact;
