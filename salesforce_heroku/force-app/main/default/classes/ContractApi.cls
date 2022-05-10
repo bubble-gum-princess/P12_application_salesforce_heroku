@@ -1,9 +1,14 @@
 @RestResource(urlMapping='/contracts/*')
 global with sharing class ContractApi {
     @HttpPost
-    global static Id create(Contract contract) {
-        RestContext.response.statusCode = 200;
-        return ContractService.create(contract).id;
+    global static String create(Contract contract) {
+        RestContext.response.statusCode = 201;
+        try {
+            return ContractService.create(contract).id;
+        } catch(MissingFieldException e) {
+            RestContext.response.statusCode = 400;
+            return e.getMessage();
+        }
     }
     @HttpPatch
     global static Id change(Contract contract) {

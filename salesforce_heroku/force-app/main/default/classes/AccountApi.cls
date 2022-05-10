@@ -2,7 +2,7 @@
 global with sharing class AccountApi {
    @HttpPost
     global static Id create(Account account) {
-        RestContext.response.statusCode = 200;
+        RestContext.response.statusCode = 201;
         return AccountService.create(account).id;
     }
     @HttpPatch
