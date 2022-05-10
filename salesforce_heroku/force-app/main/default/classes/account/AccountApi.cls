@@ -13,7 +13,7 @@ global with sharing class AccountApi {
     }
 
     @HttpPatch
-    global static Id change(Account account) {
+    global static Id modify(Account account) {
         RestRequest req = RestContext.request;
         String id = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
         account.id = id;
