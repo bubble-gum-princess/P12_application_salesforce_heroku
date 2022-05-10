@@ -16,7 +16,6 @@ public with sharing class AccountApiTest {
     @isTest static void testCreateExistedAccount() {
         RestContext.response = new RestResponse();
         Id accountId1 = AccountApi.create(new Account(name=accountName));
-        //Recall the method to test with same param
         Id accountId2 = AccountApi.create(new Account(name=accountName));
 
         System.assert(accountId1 != null);
