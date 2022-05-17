@@ -9,11 +9,17 @@ public with sharing class ContactService {
     }
 
     public static Contact create(Contact aContact) {
+        if(aContact.email!= null){
+            aContact.email_heroku__c=aContact.email;
+        }
         insert aContact;
         return aContact;
     }
 
     public static Contact modify(Contact aContact) {
+        if(aContact.email!= null){
+            aContact.email_heroku__c=aContact.email;
+        }
         update aContact;
         return aContact;
     }
